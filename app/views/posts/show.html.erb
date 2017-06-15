@@ -1,0 +1,55 @@
+<p>
+  <strong>タイトル</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>価格</strong>
+  <%= @post.price %>
+</p>
+
+<p>
+  <strong>説明</strong>
+  <%= @post.description %>
+</p>
+
+<p>
+  <strong>評価(5段階)</strong>
+  <%= @post.rated %>
+</p>
+
+<p>コメント</p>
+<ul>
+	<% if @post.comments.any? %>
+	<% @post.comments.each do |comment| %>
+	<li><%= comment.body %> (by <%= comment.commenter %></li>
+	<% end %>
+	<% else %>
+	<li>no comment yet.</li>
+	<% end %>
+
+</ul>
+<p>コメント追加</p>
+	<%= form_for([@post,@post.comments.build]) do |f| %>
+
+  <div class="field">
+    <%= f.label :commenter %>
+    <%= f.text_field :commenter %>
+  </div>
+
+  <div class="field">
+    <%= f.label :body %>
+    <%= f.text_area :body, :rows => 2 %>
+  </div>
+  <input type="submit" value="コメントする">
+
+<% end %>
+
+
+
+
+
+ 
+
+<%= link_to '編集する', edit_post_path(@post.id) %> |
+<%= link_to '戻る', posts_path %>

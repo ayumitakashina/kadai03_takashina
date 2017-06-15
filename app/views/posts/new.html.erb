@@ -1,0 +1,34 @@
+<h1>投稿する</h1>
+
+<%= form_tag posts_path do %>
+タイトル
+<input type="string" name="post[title]">
+<pre>
+
+</pre>
+価格
+<input type="string" name="post[price]">
+<pre>
+	
+</pre>
+説明
+<textarea name="post[description]"></textarea>
+<pre>
+	
+</pre>
+評価(5段階)
+<select name="post[rated]">
+	<option>1</option>
+	<option>2</option>
+	<option>3</option>
+	<option>4</option>
+	<option>5</option>
+</select>
+<pre>
+	
+</pre>
+<input type="submit" value="投稿する">
+	
+<% end %>
+
+<%= link_to '戻る', posts_path %>
